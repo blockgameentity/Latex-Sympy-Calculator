@@ -32,26 +32,6 @@ class PythonServer {
 		this.outputChannel.appendLine(`Starting Python server at ${serverPath}`);
 		this.outputChannel.appendLine(`Using Python: ${pythonPath}`);
 
-		// Don't auto-update during testing/activation - it's too slow
-		// Users can manually update or it will happen on next restart
-		const shouldAutoUpdate =
-			process.env.VSCODE_EXTHOST_WILL_SEND_SOCKET !== "true";
-
-		if (shouldAutoUpdate) {
-			try {
-				this.outputChannel.appendLine(
-					"Checking for latex2sympy2_extended updates...",
-				);
-				const { stdout, stderr } = await execAsync(
-					`${pythonPath} -m pip install --upgrade latex2sympy2_extended[antlr4_13_2]`,
-				);
-				if (stdout) this.outputChannel.appendLine(stdout);
-				if (stderr) this.outputChannel.appendLine(stderr);
-			} catch (err) {
-				this.outputChannel.appendLine(`Update check failed: ${err}`);
-			}
-		}
-
 		// Spawn Python server process
 		this.process = spawn(pythonPath, [serverPath]);
 
