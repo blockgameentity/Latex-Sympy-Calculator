@@ -1,6 +1,6 @@
-import { type ChildProcess, exec, spawn } from "child_process";
-import * as os from "os";
-import { promisify } from "util";
+import { type ChildProcess, exec, spawn } from "node:child_process";
+import * as os from "node:os";
+import { promisify } from "node:util";
 import * as vscode from "vscode";
 
 const execAsync = promisify(exec);
@@ -172,8 +172,7 @@ async function post(data: string, path: string): Promise<string> {
 	}
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function get(path: string): Promise<any> {
+async function get(path: string): Promise<unknown> {
 	const controller = new AbortController();
 	const timeoutId = setTimeout(() => controller.abort(), 5000);
 
@@ -391,7 +390,7 @@ export function activate(context: vscode.ExtensionContext): void {
 				if (!editor) return;
 
 				try {
-					const data = await get("/variances");
+					const data = (await get("/variances")) as Record<string, unknown>;
 					const result =
 						"\n" +
 						Object.keys(data)
@@ -431,7 +430,7 @@ export function activate(context: vscode.ExtensionContext): void {
 			"latex-sympy-calculator.toggle-complex-number",
 			async () => {
 				try {
-					const data = await get("/complex");
+					const data = (await get("/complex")) as { value: boolean };
 					const status = data.value ? "On" : "Off";
 					vscode.window.showInformationMessage(
 						`Complex number support: ${status}`,

@@ -4,7 +4,7 @@
     "publisher": "OrangeX4",
     "description": "Convert Latex to Sympy and calculate it in Latex or Markdown.",
     "icon": "icon.png",
-    "version": "1.6.0",
+    "version": "2.0.0",
     "engines": {
         "vscode": "^1.116.0"
     },
@@ -158,10 +158,10 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
+        "vscode:prepublish": "bun run compile",
         "compile": "tsc -p ./ && tsc -p test/",
         "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile && npm run lint",
+        "pretest": "bun run compile && bun run lint",
         "lint": "biome check src test",
         "lint:fix": "biome check --write src test",
         "format": "biome format --write src test",
@@ -169,14 +169,14 @@
     },
     "devDependencies": {
         "@biomejs/biome": "2.4.12",
-        "@types/glob": "^7.2.0",
-        "@types/minimatch": "^5.1.2",
-        "@types/mocha": "^10.0.0",
-        "@types/node": "^18.0.0",
+        "@types/glob": "^9.0.0",
+        "@types/minimatch": "^6.0.0",
+        "@types/mocha": "^10.0.10",
+        "@types/node": "^25.6.0",
         "@types/vscode": "^1.116.0",
-        "glob": "^10.0.0",
-        "mocha": "^10.0.0",
-        "typescript": "^5.0.0",
+        "glob": "^13.0.6",
+        "mocha": "^11.7.5",
+        "typescript": "^6.0.3",
         "vscode-test": "^1.6.1"
     },
     "license": "MIT",
