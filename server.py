@@ -14,7 +14,6 @@ class SessionState:
 
 session_state = SessionState()
 
-
 def latex2latex_impl(latex_str: str, variables: dict, is_real: bool = False) -> str:
     """
     Replacement for the missing latex2latex() function.

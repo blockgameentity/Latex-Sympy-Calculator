@@ -8,7 +8,7 @@ It is designed for providing **people writing in latex or markdown** a ability t
 
 PS: If you want to install the extension, **PLEASE READ THE INSTALL DESCRIPTION!**
 
-![](https://picgo-1258602555.cos.ap-nanjing.myqcloud.com/latex2sympy.gif)
+![](./img/latex2sympy.gif)
 
 ## Features
 
@@ -149,7 +149,7 @@ You can **SELECT** matrix, then press `Shift + Ctrl + Alt + T` to transform it t
     7 & 8 & 9
 \end{bmatrix} \to \begin{bmatrix}1 & 0 & -1\\0 & 1 & 2\\0 & 0 & 0\end{bmatrix}
 ```
-<img src="./matrix-transformation-example.png" width="200">
+<img src="./img/matrix-transformation-example.png" width="200">
 
 ### Variances
 
